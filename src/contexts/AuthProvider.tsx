@@ -1,7 +1,6 @@
 import React, { useEffect, useState, type ReactNode } from 'react';
 import { AuthContext } from './AuthContext';
-import { GoogleAuthProvider } from 'firebase/auth/web-extension';
-import { onAuthStateChanged, signInWithPopup, signOut, type User } from 'firebase/auth';
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, type User } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 
 const AuthProvider = ({children} : {children: ReactNode}) => {
