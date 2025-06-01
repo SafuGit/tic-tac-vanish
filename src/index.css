@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+@plugin 'daisyui' {
+  themes: ['dark', 'light', 'amoled']
+}
+
+@plugin "daisyui/theme" {
+  name: "amoled";
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
+
+  --color-base-100: oklch(0% 0 0);      /* Pure black background */
+  --color-base-200: oklch(15% 0.02 240);
+  --color-base-300: oklch(25% 0.03 240);
+  --color-base-content: oklch(95% 0.01 260);  /* Very light text */
+
+  --color-primary: oklch(60% 0.3 240);        /* Electric blue */
+  --color-primary-content: oklch(100% 0 0);   /* Pure white */
+
+  --color-secondary: oklch(50% 0.25 320);     /* Hot pink */
+  --color-secondary-content: oklch(100% 0 0);
+
+  --color-accent: oklch(55% 0.3 180);         /* Aqua-teal */
+  --color-accent-content: oklch(0% 0 0);
+
+  --color-neutral: oklch(20% 0.01 260);       /* Dark gray */
+  --color-neutral-content: oklch(90% 0.02 260);
+
+  --color-info: oklch(70% 0.15 250);
+  --color-success: oklch(65% 0.25 140);
+  --color-warning: oklch(65% 0.2 80);
+  --color-error: oklch(55% 0.2 25);
+
+  --radius-box: 0.75rem;
+  --radius-btn: 0.5rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
