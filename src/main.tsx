@@ -4,11 +4,14 @@ import './index.css'
 import AuthProvider from './contexts/AuthProvider.tsx'
 import { RouterProvider } from 'react-router'
 import { routes } from './router/routes.tsx'
+import FirestoreProvider from './contexts/FirestoreProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={routes}></RouterProvider>
-    </AuthProvider>
+    <FirestoreProvider>
+      <AuthProvider>
+        <RouterProvider router={routes}></RouterProvider>
+      </AuthProvider>
+    </FirestoreProvider>
   </StrictMode>,
 )
