@@ -22,7 +22,12 @@ const FirestoreProvider = ({children} : {children: ReactNode}) => {
         createdAt: serverTimestamp(),
         status: 'waiting',
       });
-      console.log("Game initialized with ID: ", docRef.id);
+      Swal.fire({
+        icon: 'success',
+        title: 'Game Initialized',
+        text: 'You can now start playing!',
+      });
+      return docRef.id;
     } catch (error) {
       console.error("Error initializing game: ", error);
       Swal.fire({
@@ -36,7 +41,7 @@ const FirestoreProvider = ({children} : {children: ReactNode}) => {
 
   const initSingleplayerGame = async () => {
     try {
-      const docRef = doc(db, "singlePlayerGames", crypto.randomUUID());
+      const docRef = doc(db, "games", crypto.randomUUID());
       await setDoc(docRef, {
         board: Array(9).fill(null),
         turn: 'X',
@@ -56,8 +61,30 @@ const FirestoreProvider = ({children} : {children: ReactNode}) => {
         title: 'Game Initialized',
         text: 'You can now start playing against the AI!',
       });
+      return docRef.id;
     } catch (error) {
       console.error("Error initializing singleplayer game: ", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      })
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const updateTurn = async (gameId: string, board: any, newTurn: 'X' | 'O', moves: any, dissapeared: any, winner: any) => {
+    try {
+      const docRef = doc(db, 'games', gameId)
+      await setDoc(docRef, {
+        board: board,
+        turn: newTurn,
+        moves: moves,
+        dissapeared: dissapeared,
+        winner: winner,
+      }, { merge: true})
+    } catch (error) {
+      console.error("Error updating game turn: ", error);
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -69,6 +96,7 @@ const FirestoreProvider = ({children} : {children: ReactNode}) => {
   const firestoreInfo = {
     initGame,
     initSingleplayerGame,
+    updateTurn,
   }
 
   return (

@@ -1,12 +1,9 @@
-// import React from 'react';
-import ActionButtons from '../../gameComponents/ActionButtons';
-import GameBoard from '../../gameComponents/GameBoard';
+import GameActions from "../../gameComponents/GameActions";
 
 const Home = () => {
   return (
     <div>
-      <ActionButtons></ActionButtons>
-      <GameBoard></GameBoard>
+      <GameActions></GameActions>
     </div>
   );
 };

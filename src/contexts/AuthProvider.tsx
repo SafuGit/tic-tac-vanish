@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { AuthContext } from './AuthContext';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, TwitterAuthProvider, type User } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
