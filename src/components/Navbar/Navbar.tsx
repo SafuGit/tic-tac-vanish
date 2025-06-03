@@ -2,6 +2,7 @@ import { use } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import { BsHouse } from "react-icons/bs";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -28,7 +29,9 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-200 shadow-sm">
-      <div className="navbar-start"></div>
+      <div className="navbar-start">
+        <Link to="/" className="btn btn-ghost text-xl"><BsHouse className="text-2xl"></BsHouse></Link>
+      </div>
       <div className="navbar-center">
         <a className="btn btn-ghost text-xl flex gap-0">
           TicTac

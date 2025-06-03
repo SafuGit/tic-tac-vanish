@@ -1,6 +1,6 @@
 import React, { useEffect, useState, type ReactNode } from 'react';
 import { AuthContext } from './AuthContext';
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, type User } from 'firebase/auth';
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, TwitterAuthProvider, type User } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 
 const AuthProvider = ({children} : {children: ReactNode}) => {
@@ -8,10 +8,16 @@ const AuthProvider = ({children} : {children: ReactNode}) => {
   const [loading, setLoading] = useState(true);
 
   const provider = new GoogleAuthProvider();
+  const twitterProvider = new TwitterAuthProvider();
 
   const signInWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, provider);
+  }
+
+  const signInWithTwitter = () => {
+    setLoading(true);
+    return signInWithPopup(auth, twitterProvider);
   }
 
   const logOut = () => {
@@ -33,6 +39,7 @@ const AuthProvider = ({children} : {children: ReactNode}) => {
     user,
     loading,
     signInWithGoogle,
+    signInWithTwitter,
     logOut
   }
 
